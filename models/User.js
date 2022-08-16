@@ -9,20 +9,39 @@ const userSchema = new userSchema(
             unique: true,
             trim: true,
         },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            match: [/.+@.+\..+/, 'Please use a valid email address']
+        },
         thoughts: [
             {
                 type:Schema.Types.ObjectId,
                 ref: 'Thought',
             }
         ],
-        friends // same patterna as thoughts
+        friends: [
+            {
+                type:Schema.Types.ObjectId,
+                ref: 'User',
+            },
+        ],
     },
     {
-        // use virtuals to true
+        toJson: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
-// set up virtual for friendCount
+// set up virtual for friendCount 
+userSchema.virtual("friendCount").get(function () {
+    return this.friends.length;
+});
 
 // set up model
+const User = model('User', userSchema);
 
 //export model
+module.exports = User;
