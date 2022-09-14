@@ -29,7 +29,7 @@
   
 `This project is licensed under MIT`
   ### Tests:
-  To test this app, open the file in VS Code, open the terminal and run `node index.js`. Answer the questions and view the preview of the `generatedREADME.md` file to see if the answers were rendered correctly. 
+  To test this app, watch the walk-through video and add your own data to see if it renders correctly. 
   ### Technology Used:
   - JavaScript
   - Express.js
